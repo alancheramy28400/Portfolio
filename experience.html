@@ -10,7 +10,283 @@
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{scroll-behavior:smooth;}
     body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;cursor:none;}
+    .cursor{wid<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Alan Cheramy — Experiences</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root{--bg:#f5f3ee;--surface:#edeae2;--card:#fff;--blue:#2563eb;--violet:#7c3aed;--orange:#f97316;--green:#059669;--pink:#ec4899;--text:#1a1a2e;--muted:#6b6b80;--border:#e2dfd6;--shadow:0 4px 24px rgba(0,0,0,.07);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{scroll-behavior:smooth;}
+    body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;cursor:none;}
     .cursor{width:10px;height:10px;background:var(--blue);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
+    .cursor-ring{width:32px;height:32px;border:2px solid var(--blue);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease-out;opacity:.4;}
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,243,238,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
+    .nav-logo{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;color:var(--text);}
+    .nav-logo span{color:var(--blue);}
+    .nav-links{display:flex;gap:2rem;list-style:none;}
+    .nav-links a{font-size:.82rem;font-weight:600;color:var(--muted);text-decoration:none;letter-spacing:.06em;text-transform:uppercase;transition:color .2s;position:relative;}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--blue);transition:width .25s;}
+    .nav-links a:hover{color:var(--blue);}
+    .nav-links a:hover::after{width:100%;}
+    .container{max-width:1080px;margin:0 auto;padding:0 2rem;}
+    #hero{min-height:100vh;display:flex;align-items:center;padding-top:80px;}
+    .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;width:100%;}
+    .hero-chip{display:inline-flex;align-items:center;gap:.5rem;background:#dbeafe;color:var(--blue);border:1px solid #bfdbfe;padding:.35rem .9rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:1.2rem;}
+    .hero-chip::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue);animation:blink 1.5s infinite;}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+    h1{font-size:clamp(3rem,5.5vw,5rem);font-weight:800;line-height:1.02;letter-spacing:-.03em;color:var(--text);}
+    h1 em{font-style:normal;background:linear-gradient(120deg,var(--blue),var(--violet));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+    .hero-sub{margin-top:1.4rem;font-size:1rem;color:var(--muted);line-height:1.8;max-width:420px;}
+    .hero-cta{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;}
+    .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.75rem 1.6rem;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:none;cursor:none;transition:all .25s;font-family:'DM Mono',monospace;}
+    .btn-primary{background:var(--blue);color:#fff;}
+    .btn-primary:hover{background:var(--violet);transform:translateY(-2px);box-shadow:0 8px 20px rgba(37,99,235,.3);}
+    .btn-ghost{background:transparent;color:var(--text);border:1.5px solid var(--border);}
+    .btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px);}
+    .hero-card{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);padding:2.5rem;}
+    .hero-card-header{display:flex;align-items:center;gap:1.2rem;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);}
+    .avatar{width:72px;height:72px;background:linear-gradient(135deg,var(--blue),var(--violet));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:800;color:#fff;flex-shrink:0;}
+    .hero-card-name{font-size:1.2rem;font-weight:800;color:var(--text);}
+    .hero-card-role{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--blue);margin-top:.2rem;}
+    .hero-card-info{display:flex;flex-direction:column;gap:.7rem;}
+    .info-row{display:flex;align-items:center;gap:.75rem;font-size:.85rem;color:var(--muted);}
+    .hero-card-tags{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--border);display:flex;flex-wrap:wrap;gap:.5rem;}
+    .chip{font-family:'DM Mono',monospace;font-size:.68rem;padding:.3rem .7rem;background:var(--surface);border:1px solid var(--border);color:var(--text);}
+    .chip.b{background:#eff6ff;border-color:#bfdbfe;color:var(--blue);}
+    .chip.v{background:#f5f3ff;border-color:#ddd6fe;color:var(--violet);}
+    .chip.o{background:#fff7ed;border-color:#fed7aa;color:var(--orange);}
+    section{padding:5rem 0;}
+    .section-label{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--blue);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.6rem;}
+    h2{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-.02em;color:var(--text);}
+    h2 span{color:var(--blue);}
+    .section-header{margin-bottom:3rem;}
+    .divider{height:1px;background:var(--border);margin:0 2rem;}
+    .cv-block{background:var(--card);border:1px solid var(--border);box-shadow:var(--shadow);margin-bottom:1.5rem;overflow:hidden;}
+    .cv-block-header{padding:1.2rem 2rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:1rem;background:var(--surface);}
+    .cv-block-icon{width:38px;height:38px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+    .ib{background:#dbeafe;}.iv{background:#ede9fe;}.ig{background:#d1fae5;}.ip{background:#fce7f3;}
+    .cv-block-title{font-size:1rem;font-weight:700;color:var(--text);}
+    .cv-block-sub{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:.2rem;}
+    .cv-block-body{padding:2rem;}
+    .exp-item{padding:1.5rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:190px 1fr;gap:1.5rem;}
+    .exp-item:last-child{border-bottom:none;padding-bottom:0;}
+    .exp-item:first-child{padding-top:0;}
+    .exp-date{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);line-height:1.7;padding-top:.2rem;}
+    .exp-date strong{display:block;color:var(--blue);font-size:.78rem;margin-bottom:.2rem;}
+    .exp-title{font-size:1rem;font-weight:700;color:var(--text);}
+    .exp-company{font-size:.88rem;color:var(--blue);font-weight:600;margin-top:.15rem;}
+    .exp-desc{margin-top:.7rem;font-size:.88rem;color:var(--muted);line-height:1.7;}
+    .exp-desc li{margin-left:1rem;margin-bottom:.2rem;}
+    .edu-item{padding:1.5rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:190px 1fr;gap:1.5rem;}
+    .edu-item:last-child{border-bottom:none;padding-bottom:0;}
+    .edu-item:first-child{padding-top:0;}
+    .edu-date{font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);padding-top:.2rem;}
+    .edu-date strong{display:block;color:var(--violet);font-size:.78rem;margin-bottom:.2rem;}
+    .edu-logo-row{display:flex;align-items:center;gap:1.2rem;}
+    .edu-logo{flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.12));transition:transform .2s;}
+    .edu-logo:hover{transform:scale(1.06);}
+    .edu-title{font-size:1rem;font-weight:700;color:var(--text);}
+    .edu-school{font-size:.85rem;color:var(--muted);margin-top:.3rem;}
+    .edu-badge{display:inline-block;margin-top:.6rem;font-family:'DM Mono',monospace;font-size:.68rem;padding:.25rem .6rem;background:#f5f3ff;border:1px solid #ddd6fe;color:var(--violet);}
+    .edu-badge.g{background:#f0fdf4;border-color:#bbf7d0;color:var(--green);}
+    .skills-wrap{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1rem;}
+    .skill-group{padding:1.4rem;border:1px solid var(--border);background:var(--surface);}
+    .skill-group-title{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--text);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem;}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--blue);flex-shrink:0;}
+    .dot.v{background:var(--violet);}.dot.o{background:var(--orange);}.dot.g{background:var(--green);}
+    .skill-tags-wrap{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .stag{font-family:'DM Mono',monospace;font-size:.7rem;padding:.25rem .65rem;background:#fff;border:1px solid var(--border);color:var(--text);transition:all .2s;}
+    .stag:hover{border-color:var(--blue);color:var(--blue);}
+    .soft-wrap{display:flex;flex-wrap:wrap;gap:.8rem;}
+    .soft-item{display:flex;align-items:center;gap:.6rem;padding:.6rem 1.1rem;border:1px solid var(--border);background:var(--surface);font-size:.88rem;font-weight:600;transition:all .2s;}
+    .soft-item:hover{border-color:var(--blue);background:#eff6ff;color:var(--blue);}
+    .interest-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+    .interest-item{padding:1.5rem 1rem;text-align:center;border:1px solid var(--border);background:var(--surface);transition:all .25s;}
+    .interest-item:hover{border-color:var(--orange);background:#fff;transform:translateY(-3px);box-shadow:var(--shadow);}
+    .interest-icon{font-size:2rem;margin-bottom:.6rem;}
+    .interest-label{font-size:.88rem;font-weight:700;color:var(--text);}
+    .interest-sub{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:.3rem;}
+    .project-banner{background:linear-gradient(120deg,var(--blue),var(--violet));padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+    .project-banner-text{color:#fff;}
+    .project-banner-text h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;}
+    .project-banner-text p{font-size:.88rem;opacity:.85;}
+    .project-banner-badge{font-family:'DM Mono',monospace;font-size:.72rem;padding:.5rem 1.2rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);color:#fff;white-space:nowrap;}
+    #contact{background:linear-gradient(135deg,#eff6ff 0%,#f5f3ff 100%);padding:5rem 0;}
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+    .contact-intro p{font-size:1.05rem;color:var(--muted);line-height:1.85;margin-bottom:1rem;}
+    .contact-intro p strong{color:var(--text);}
+    .contact-cards{display:flex;flex-direction:column;gap:1rem;}
+    .contact-card{display:flex;align-items:center;gap:1.2rem;padding:1.2rem 1.5rem;background:var(--card);border:1px solid var(--border);text-decoration:none;color:var(--text);box-shadow:var(--shadow);transition:all .25s;position:relative;overflow:hidden;}
+    .contact-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--blue);transform:scaleY(0);transition:transform .25s;}
+    .contact-card:hover{transform:translateX(6px);border-color:var(--blue);box-shadow:0 8px 30px rgba(37,99,235,.12);}
+    .contact-card:hover::before{transform:scaleY(1);}
+    .contact-card-icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;font-weight:800;flex-shrink:0;}
+    .contact-card-body{flex:1;}
+    .contact-card-label{font-family:'DM Mono',monospace;font-size:.68rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;}
+    .contact-card-value{font-size:.95rem;font-weight:600;color:var(--text);}
+    .contact-card-arrow{font-size:1.2rem;color:var(--muted);transition:all .25s;}
+    .contact-card:hover .contact-card-arrow{color:var(--blue);transform:translateX(4px);}
+    footer{padding:1.8rem 2rem;text-align:center;font-family:'DM Mono',monospace;font-size:.72rem;color:var(--muted);border-top:1px solid var(--border);}
+    footer span{color:var(--blue);}
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s,transform .65s;}
+    .reveal.visible{opacity:1;transform:translateY(0);}
+    @media(max-width:768px){.hero-inner{grid-template-columns:1fr;}.exp-item,.edu-item{grid-template-columns:1fr;gap:.5rem;}.interest-wrap{grid-template-columns:repeat(2,1fr);}.contact-grid{grid-template-columns:1fr;gap:2rem;}.nav-links{display:none;}}
+  </style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+<nav id="main-nav"><div class="nav-logo">AC<span>.</span></div><ul class="nav-links"><li><a href="accueil.html" >Accueil</a></li>
+<li><a href="experience.html" style="color:var(--blue);">Experiences</a></li>
+<li><a href="education.html" >Formation</a></li>
+<li><a href="skills.html" >Competences</a></li>
+<li><a href="contact.html" >Contact</a></li>
+</ul></nav>
+<main>
+<section data-page="experience.html" id="experience" style="padding-top:5rem;">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">// Experiences professionnelles</div>
+      <h2>Terrain &amp; <span>pratique</span></h2>
+    </div>
+    <div class="project-banner reveal">
+      <div class="project-banner-text"><h3>Projet en cours · 2025-2026</h3><p>Montage d'une infrastructure reseau type entreprise — BTS SIO SISR</p></div>
+      <div class="project-banner-badge">En cours</div>
+    </div>
+    <div class="cv-block reveal">
+      <div class="cv-block-header"><div class="cv-block-icon ib">💼</div><div><div class="cv-block-title">Stages professionnels</div><div class="cv-block-sub">Du plus recent au plus ancien</div></div></div>
+      <div class="cv-block-body">
+        <div class="exp-item">
+          <div class="exp-date"><strong>Jan – Fev 2026</strong>Lycee Sully, Nogent-le-Rotrou</div>
+          <div><div class="exp-title">Stagiaire — Infrastructure WAN simulee</div><div class="exp-company">Lycee des Metiers Sully — Nogent-le-Rotrou</div>
+            <ul class="exp-desc">
+              <li>Realisation d'une infrastructure WAN simulee en environnement controle</li>
+              <li>Utilisation du nom de domaine <strong>reef.fr</strong> comme domaine de simulation, avec resolution DNS interne</li>
+              <li>Simulation du ping vers <strong>Google</strong> et <strong>Cloudflare</strong></li>
+              <li>Restriction imposee par le rectorat : routeurs reels avec NAT — impossible d'identifier qui fait quoi</li>
+              <li>L'environnement simule contourne cette contrainte tout en reproduisant fidelement une infra WAN reelle</li>
+            </ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date"><strong>Mai – Juin 2025</strong>Spider Informatique, Chartres</div>
+          <div><div class="exp-title">Stagiaire Technicien IT</div><div class="exp-company">Spider Informatique — Chartres</div>
+            <ul class="exp-desc"><li>Repondre aux besoins des clients sur site ou a distance</li><li>Installation et configuration de postes de travail</li></ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date"><strong>Fev – Mars 2023</strong>Spider Informatique, Chartres</div>
+          <div><div class="exp-title">Stagiaire Technicien IT</div><div class="exp-company">Spider Informatique — Chartres</div>
+            <ul class="exp-desc"><li>Support client sur site et a distance</li><li>Installation et mise en service de postes de travail</li></ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date"><strong>Nov – Dec 2021</strong>et<br><strong>Sep – Oct 2022</strong><br>Mairie, Nogent-le-Rotrou</div>
+          <div><div class="exp-title">Stagiaire Support Informatique</div><div class="exp-company">Mairie de Nogent-le-Rotrou</div>
+            <ul class="exp-desc"><li>Preparation d'ordinateurs (Windows + logiciels)</li><li>Deplacements selon les besoins des clients</li><li>Support materiel au personnel</li></ul>
+          </div>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date"><strong>Mai – Juil 2021</strong>et<br><strong>Mai 2022</strong><br>La Grenouille Informatique, Alencon</div>
+          <div><div class="exp-title">Stagiaire Technicien Reparateur</div><div class="exp-company">La Grenouille Informatique — Alencon</div>
+            <ul class="exp-desc"><li>Montage et demontage d'ordinateurs</li><li>Changement de disques durs</li></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer><p>Portfolio de <span>Alan Cheramy</span> · 2026</p></footer>
+<script>
+  // CURSOR
+  const cursor=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+  (function a(){cursor.style.left=mx+'px';cursor.style.top=my+'px';rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+  function bindHover(){
+    document.querySelectorAll('a,button,.cv-block,.skill-group,.interest-item,.soft-item').forEach(el=>{
+      if(el._hoverBound) return; el._hoverBound=true;
+      el.addEventListener('mouseenter',()=>{cursor.style.width='18px';cursor.style.height='18px';cursor.style.background='#7c3aed';ring.style.borderColor='#7c3aed';ring.style.width='44px';ring.style.height='44px';});
+      el.addEventListener('mouseleave',()=>{cursor.style.width='10px';cursor.style.height='10px';cursor.style.background='#2563eb';ring.style.borderColor='#2563eb';ring.style.width='32px';ring.style.height='32px';});
+    });
+  }
+  bindHover();
+
+  // REVEAL
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.08});
+  function bindReveal(){ document.querySelectorAll('.reveal:not(.visible)').forEach(r=>obs.observe(r)); }
+  bindReveal();
+
+  // NAV active
+  function updateNav(){
+    const secs=document.querySelectorAll('section[id]'),navAs=document.querySelectorAll('.nav-links a');
+    const cur=window.scrollY+window.innerHeight/2;
+    let active='';
+    secs.forEach(s=>{ if(s.offsetTop<=cur) active=s.dataset.page||''; });
+    navAs.forEach(a=>{ a.style.color=a.getAttribute('href')===active?'var(--blue)':''; });
+  }
+
+  // Intercept nav clicks — scroll vers section déjà chargée ou charge la page
+  document.getElementById('main-nav').addEventListener('click', e=>{
+    const a=e.target.closest('a[href]'); if(!a) return;
+    const href=a.getAttribute('href');
+    if(!href||href.startsWith('#')) return;
+    e.preventDefault();
+    const existing=document.querySelector(`section[data-page="${href}"]`);
+    if(existing){ existing.scrollIntoView({behavior:'smooth'}); return; }
+    loadAndAppend(href, ()=>{ document.querySelector(`section[data-page="${href}"]`)?.scrollIntoView({behavior:'smooth'}); });
+  });
+
+  // INFINITE SCROLL — charger page suivante
+  let loading=false, loaded=new Set(['education.html']);
+  const NEXT='education.html';
+
+  async function loadAndAppend(file, cb){
+    if(loading) return; loading=true;
+    try{
+      const res=await fetch(file);
+      const html=await res.text();
+      const parser=new DOMParser();
+      const doc=parser.parseFromString(html,'text/html');
+      const sec=doc.querySelector('section');
+      if(sec){
+        sec.setAttribute('data-page',file);
+        // Ajouter séparateur
+        const div=document.createElement('div');
+        div.className='divider';
+        document.querySelector('main').appendChild(div);
+        document.querySelector('main').appendChild(sec);
+        bindHover(); bindReveal();
+        loaded.add(file);
+      }
+      if(cb) cb();
+    }catch(e){console.error(e);}
+    loading=false;
+  }
+
+  // Pages dans l'ordre
+  const allPages=['accueil.html','experience.html','education.html','skills.html','contact.html'];
+  let nextIdx=allPages.indexOf('education.html');
+
+  window.addEventListener('scroll',()=>{
+    updateNav();
+    const nearBottom=window.scrollY+window.innerHeight>=document.body.scrollHeight-300;
+    if(nearBottom && !loading && nextIdx<allPages.length){
+      const toLoad=allPages[nextIdx];
+      if(!loaded.has(toLoad)){
+        loadAndAppend(toLoad);
+      }
+      nextIdx++;
+    }
+  });
+</script>
+</body>
+</html>th:10px;height:10px;background:var(--blue);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;}
     .cursor-ring{width:32px;height:32px;border:2px solid var(--blue);border-radius:50%;position:fixed;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease-out;opacity:.4;}
     nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;background:rgba(245,243,238,.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);}
     .nav-logo{font-family:'DM Mono',monospace;font-size:.95rem;font-weight:500;color:var(--text);}
